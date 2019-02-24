@@ -28,18 +28,25 @@ Item {
     readonly property bool horizontal: plasmoid.formFactor === PlasmaCore.Types.Horizontal
     readonly property bool planar: plasmoid.formFactor === PlasmaCore.Types.Planar
 
-   // Layout.fillWidth: horizontal ? false : true
-   // Layout.fillHeight: horizontal ? true : false
-    Layout.minimumWidth:   horizontal ? 5.0 : -1
-    Layout.maximumWidth:   horizontal ? 5.0 : -1
-    Layout.minimumHeight: !horizontal ? 5.0 : -1
-    Layout.maximumHeight: !horizontal ? 5.0 : -1
+    Layout.fillWidth: horizontal ? false : true
+    Layout.fillHeight: horizontal ? true : false
 
-    Layout.preferredWidth: Layout.maximumWidth
-    Layout.preferredHeight: Layout.maximumHeight
+    Layout.minimumWidth:   horizontal ? length : -1
+    Layout.preferredWidth: Layout.minimumWidth
+    Layout.maximumWidth:   Layout.minimumWidth
+
+    Layout.minimumHeight: !horizontal ? length : -1
+    Layout.preferredHeight: Layout.minimumHeight
+    Layout.maximumHeight: Layout.minimumHeight
 
     Plasmoid.preferredRepresentation: plasmoid.fullRepresentation
     Plasmoid.backgroundHints: planar ? PlasmaCore.Types.StandardBackground : PlasmaCore.Types.NoBackground
+
+    readonly property int length: latteBridge ? (latteBridge.inEditMode ? 10 : 5) : -1
+
+    readonly property int fullThickness: plasmoid.formFactor === PlasmaCore.Types.Vertical ?
+                                             parent.width : parent.height
+    readonly property int thickness: (latteBridge ? latteBridge.iconSize - 4 : fullThickness - 4)
 
     Component.onCompleted: {
         Plasmoid.removeAction( 'configure' )
@@ -64,8 +71,8 @@ Item {
         id: sep
         anchors.centerIn: parent
 
-        width: horizontal ? 1 : parent.width - 4
-        height: !horizontal ? 1 : parent.height - 4
+        width: horizontal ? 1 : thickness
+        height: !horizontal ? 1 : thickness
 
         color: enforceLattePalette ? latteBridge.palette.textColor : theme.textColor
         opacity: 0.4
