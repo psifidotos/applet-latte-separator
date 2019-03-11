@@ -42,22 +42,20 @@ Item {
     Plasmoid.preferredRepresentation: plasmoid.fullRepresentation
     Plasmoid.backgroundHints: planar ? PlasmaCore.Types.StandardBackground : PlasmaCore.Types.NoBackground
 
-    readonly property int length: latteBridge ? (latteBridge.inEditMode ? 10 : 5) : -1
+    readonly property int length: latteBridge && latteBridge.inEditMode ? Math.max(10, totalLength) : totalLength
+    readonly property int totalLength: 2*plasmoid.configuration.lengthMargin+1
 
-    readonly property int fullThickness: plasmoid.formFactor === PlasmaCore.Types.Vertical ?
-                                             parent.width : parent.height
-    readonly property int thickness: (latteBridge ? latteBridge.iconSize - 4 : fullThickness - 4)
+    readonly property int fullThickness: plasmoid.formFactor === PlasmaCore.Types.Vertical ? parent.width : parent.height
+    readonly property int thickness: (latteBridge ? latteBridge.iconSize - (2*thickMargin) : fullThickness - (2*thickMargin))
 
-    Component.onCompleted: {
-        Plasmoid.removeAction( 'configure' )
-    }
+    readonly property int thickMargin: plasmoid.configuration.thickMargin
+    readonly property int lengthMargn: plasmoid.configuration.lengthMargin
 
     //BEGIN Latte Dock Communicator
     property QtObject latteBridge: null // current Latte v0.9 API
 
     onLatteBridgeChanged: {
         if (latteBridge) {
-            //plasmoid.configuration.containmentType = 2; /*Latte containment with new API*/
             latteBridge.actions.setProperty(plasmoid.id, "latteSideColoringEnabled", false);
         }
     }
