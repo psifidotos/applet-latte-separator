@@ -52,11 +52,11 @@ Item {
     readonly property int lengthMargn: plasmoid.configuration.lengthMargin
 
     function increaseLength() {
-        plasmoid.configuration.lengthMargin = plasmoid.configuration.lengthMargin + 1;
+        plasmoid.configuration.lengthMargin = plasmoid.configuration.lengthMargin + 4;
     }
 
     function decreaseLength() {
-        plasmoid.configuration.lengthMargin = Math.max(0,plasmoid.configuration.lengthMargin - 1);
+        plasmoid.configuration.lengthMargin = Math.max(0,plasmoid.configuration.lengthMargin - 4);
     }
 
     //BEGIN Latte Dock Communicator
