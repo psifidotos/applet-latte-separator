@@ -4,7 +4,7 @@ This is a Plasma 5 applet that acts as a separator between applets. This plasmoi
 
 <p align="center">
 <img src="https://i.imgur.com/G1thx3D.png" width="580"><br/>
-<i>Latte Separators between window icon, title and application menu, all inside a Latte panel</i>
+<i>Latte Separators between window icon, title and application menu</i>
 </p>
 
 <p align="center">
