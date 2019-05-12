@@ -45,7 +45,13 @@ Item {
     readonly property int length: latteBridge && latteBridge.inEditMode ? Math.max(10, totalLength) : totalLength
     readonly property int totalLength: 2*plasmoid.configuration.lengthMargin+1
 
-    readonly property int fullThickness: plasmoid.formFactor === PlasmaCore.Types.Vertical ? parent.width : parent.height
+    readonly property int fullThickness: {
+        if (!parent) {
+            return 36;
+        }
+
+        return plasmoid.formFactor === PlasmaCore.Types.Vertical ? parent.width : parent.height
+    }
     readonly property int thickness: (latteBridge ? latteBridge.iconSize - (2*thickMargin) : fullThickness - (2*thickMargin))
 
     readonly property int thickMargin: plasmoid.configuration.thickMargin
