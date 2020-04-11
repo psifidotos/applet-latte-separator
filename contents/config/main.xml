@@ -8,7 +8,7 @@
   <group name="General">
     <entry name="lengthMargin" type="Int">
         <label>length margin in pixels</label>
-        <default>2</default>
+        <default>3</default>
     </entry>
     <entry name="thickMargin" type="Int">
         <label>thickness margin in pixels</label>

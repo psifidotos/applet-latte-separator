@@ -43,7 +43,7 @@ Item {
     Plasmoid.backgroundHints: planar ? PlasmaCore.Types.StandardBackground : PlasmaCore.Types.NoBackground
 
     readonly property int length: latteBridge && latteBridge.inEditMode ? Math.max(10, totalLength) : totalLength
-    readonly property int totalLength: 2*plasmoid.configuration.lengthMargin+1
+    readonly property int totalLength: 2*plasmoid.configuration.lengthMargin
 
     readonly property int fullThickness: {
         if (!parent) {
