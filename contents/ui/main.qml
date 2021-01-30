@@ -42,7 +42,7 @@ Item {
     Plasmoid.preferredRepresentation: plasmoid.fullRepresentation
     Plasmoid.backgroundHints: planar ? PlasmaCore.Types.StandardBackground : PlasmaCore.Types.NoBackground
 
-    readonly property int length: latteBridge && latteBridge.inEditMode ? Math.max(10, totalLength) : totalLength
+    readonly property int length: latteBridge && latteBridge.inEditMode ? Math.max(10, totalLength) : Math.max(1, totalLength)
     readonly property int totalLength: 2*plasmoid.configuration.lengthMargin
 
     readonly property int fullThickness: {

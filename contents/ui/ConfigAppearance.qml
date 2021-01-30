@@ -49,7 +49,7 @@ Item {
             SpinBox{
                 id: lengthMargin
 
-                minimumValue: 0
+                minimumValue: 1
                 maximumValue: 64
                 stepSize: 1
                 suffix: " " + i18nc("pixels","px.")
